@@ -1,0 +1,49 @@
+.view-log-wrapper {
+    background: var(--panel);
+    padding: 1rem;
+    border-style: solid;
+    border-color: var(--border);
+    border-radius: 2rem;
+    border-width: 0.1rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.view-log-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.UD-button{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 50%;
+}
+
+.delete-button{
+    background: var(--cancel);
+}
+
+.comment {
+    font-style: italic;
+    background: var(--panel2);
+    padding: 1rem;
+}
+
+.difficulty {}
+
+.DistTime {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    font-weight: 1;
+}
+
+.back-button {
+    display: flex;
+    width: 5rem;
+}

@@ -1,0 +1,21 @@
+<div class="tour-list-item">
+
+    <div class="tour-list-left">
+        <p class="tour-title">{{ tour.title }}</p>
+        <p>from: {{ tour.from }}</p>
+        <p>to: {{ tour.to }}</p>
+        <p>transport: {{ tour.transportType }}</p>
+    </div>
+
+    <!--Adding a tour log should be accessible from the Tour entry itself-->
+    <!--Editing, Viewing, Deleting a Log should be accessible form the log list-->
+    <div class="tour-log-buttons">
+        <button (click)="createLog.emit(tour); $event.stopPropagation()">
+            Add Log
+        </button>
+
+        <button (click)="viewLogList.emit(tour); $event.stopPropagation()">
+            View Logs
+        </button>
+    </div>
+</div>

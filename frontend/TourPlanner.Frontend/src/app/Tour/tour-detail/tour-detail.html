@@ -1,0 +1,108 @@
+@if (tour) {
+  <section class="tour-summary card">
+
+    <!-- HEADER -->
+    <div class="tour-summary-top">
+      <div>
+        <h2 class="tour-title">{{ tour.title }}</h2>
+        <div class="tour-rating">
+          {{getStars(getAverageRating())}}
+          @if(getAverageRating()<0){
+            [No Ratings]
+          }
+          @else{
+            {{getAverageRating()}}
+          }
+        </div>
+      </div>
+
+      <div class="tour-actions">
+        <button type="button" (click)="onEditClick()">Edit</button>
+        <button type="button" (click)="onDeleteClick()">Delete</button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="tour-summary-content">
+
+      <!-- LEFT SIDE (IMAGE + DESCRIPTION) -->
+      <div class="tour-media">
+
+        <!-- IMAGE -->
+        <div class="main-image placeholder"></div>
+        <!-- DESCRIPTION -->
+        <div class="tour-description">
+            <p>{{ tour.description }}</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE (INFO BOX) -->
+      <aside class="tour-info-box">
+        <p>{{ tour.from }} → {{ tour.to }}</p>
+        <p>{{ tour.transportType }}</p>
+        <p>Tour Distance: {{tour.route?.distKm?.toFixed(2)}}km</p>
+        <p>Estimated Time: {{tour.route?.timeMin?.toFixed(2)}}min</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="tour-logs card">
+    <div class="section-header">
+      <h3>Tour Logs</h3>
+    </div>
+
+    @if (tourLogs.length === 0) {
+      <div class="no-logs-message">
+        <p>No tour logs available yet.</p>
+        <button type="button" (click)="onAddLogClick()">Add Log</button>
+      </div>
+    } @else {
+      <div class="logs-row">
+        @for (log of tourLogs.slice(0, 2); track log.id) {
+          <app-tour-log-entry
+            [log]="log"
+            (viewLog)="onViewLogClick($event)">
+          </app-tour-log-entry>
+        }
+      </div>
+    }
+
+    @if (tourLogs.length >= 2) {
+      <div class="show-more">
+        <button type="button" (click)="onShowMoreClick()">Show more</button>
+      </div>
+    }
+  </section>
+
+<section class="route-section card">
+  <div class="route-layout">
+
+    <!-- LEFT SIDE -->
+    <div class="route-steps">
+      <h3>Route</h3>
+
+      <div class="route-step">
+        <div class="step-dot"></div>
+        <div class="step-content">
+          <p class="step-label">Starting at:<br>{{ tour.from }}</p>
+        </div>
+      </div>
+
+
+      <div class="route-step end-step">
+        <div class="step-dot"></div>
+        <div class="step-content">
+          <p class="step-label">Ending at:<br>{{ tour.to }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <app-tour-map-component [tour]="tour"></app-tour-map-component>
+
+  </div>
+</section>
+} @else {
+  <p>Loading tour...</p>
+}

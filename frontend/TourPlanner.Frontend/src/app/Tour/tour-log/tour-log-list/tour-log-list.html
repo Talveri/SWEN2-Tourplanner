@@ -1,0 +1,14 @@
+<h4>Your Tour Logs</h4>
+<div class="log-list-container">
+
+    <div class="log-list-list">
+        @for(log of logs$ | async; track log.id){
+        <app-tour-log-entry 
+        class="log-list-item" 
+        [log]="log" 
+        (viewLog)="onViewLog($event)">
+        </app-tour-log-entry>
+        }
+    </div>
+
+</div>

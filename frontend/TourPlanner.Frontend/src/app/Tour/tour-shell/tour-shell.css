@@ -1,0 +1,26 @@
+.split-view {
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  width: 30%;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.right {
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 1rem;
+}
+
+.tour-shell-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.tour-shell-nav button {
+  background-color: var(--button);
+}

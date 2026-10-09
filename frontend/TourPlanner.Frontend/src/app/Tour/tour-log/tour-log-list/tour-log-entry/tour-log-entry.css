@@ -1,0 +1,33 @@
+.log-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0rem;
+    padding: 0rem;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+
+    padding: 0.5rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.log-list-item p {
+    font-size: 0.9rem;
+}
+
+.log-list-left {
+    padding: 0.7rem;
+    border-radius: 8px;
+}
+
+.comment {
+    font-style: italic;
+}
+
+.DistTime {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem
+}

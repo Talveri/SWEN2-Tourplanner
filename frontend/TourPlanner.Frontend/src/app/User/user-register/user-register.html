@@ -1,0 +1,38 @@
+<div class="register-container">
+    <div class="register-panel">
+        <h2>Register</h2>
+
+        <input type="text" placeholder="email@example.com" (input)="setEmail($event.target.value)" />
+        <input type="text" placeholder="username" (input)="setUsername($event.target.value)" />
+        <input type="password" placeholder="password" (input)="setPassword($event.target.value)" />
+        <input type="password" placeholder="check password" (input)="checkPassword($event.target.value)" />
+        <div class="error">
+            @if (newUser.password && checkpassword && newUser.password !== checkpassword) {
+                Passwords do not match
+            }
+        </div>
+        <div class="error">
+            @if (errorMessage) {
+                {{ errorMessage }}
+            }
+        </div>
+        <div class="success">
+            @if (successMessage) {
+                {{ successMessage }}
+            }
+        </div>
+
+        <button (click)="register()" [disabled]="!canRegister">
+            @if (isLoading) {
+                Registering...
+            } @else {
+                Register
+            }
+        </button>
+
+        <div class="login-link">
+            <a routerLink="/login">Login</a>
+        </div>
+
+    </div>
+</div>

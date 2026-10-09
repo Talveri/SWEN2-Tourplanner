@@ -1,0 +1,40 @@
+<div class="tour-list-header">
+    <h3>Your Tours</h3>
+
+    <div class="tour-list-import-export">
+        <button type="button" (click)="importFileInput.click()" [disabled]="isImportExportLoading">
+            Import
+        </button>
+        <button type="button" (click)="exportTours()" [disabled]="isImportExportLoading">
+            Export
+        </button>
+        <input #importFileInput type="file" accept="application/json,.json" hidden
+            (change)="importTours($event)" />
+    </div>
+</div>
+
+@if (importExportMessage) {
+<p class="tour-list-message">{{ importExportMessage }}</p>
+}
+
+<div class="tour-list-task-bar">
+    <input #q class="input" type="text" placeholder="Search for Tour" [value]="" (input)="onQueryInput(q.value)" />
+    <button class="btn" type="button" (click)="clearQuery()">Clear</button>
+</div>
+
+<div class="tour-list-list">
+
+    <button type="button" (click)="createTour.emit()">
+        + Add Tour
+    </button>
+
+    <div class="tour-list-entry-container">
+        @for (tour of tours; track tour.id) {
+        <div class="tour-list-item" (click)="selectTour.emit(tour)">
+            <app-tour-entry [tour]="tour" (viewLogList)="viewLogList.emit(tour)"
+                (createLog)="createLog.emit(tour)"></app-tour-entry>
+        </div>
+        }
+    </div>
+
+</div>
